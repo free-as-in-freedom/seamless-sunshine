@@ -107,6 +107,9 @@ If you followed all the instructions correctly, you should be able to use your s
 
 ## Credits
 Thanks to [MikeTheTech](https://www.youtube.com/channel/UCZ0hznff92f_i1wpYyi7tPQ/join) for his work on the Virtual Display Drivers and for his Sunshine/Moonlight tutorials.
+
 Thanks to everyone credited in the [Sunshine](https://github.com/LizardByte/Sunshine) and [Moonlight](https://github.com/moonlight-stream) repositories. 
+
 Thanks to [Steam Deck Guy](https://www.youtube.com/@steamdeckguy) for the Moonlight install tutorial.
+
 Thanks to [MartinGC94](https://github.com/MartinGC94) for his work on [DisplayConfig](https://github.com/MartinGC94/DisplayConfig).
