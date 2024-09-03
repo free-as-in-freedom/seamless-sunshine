@@ -1,11 +1,11 @@
 # seamless-sunshine
-Seamless Sunshine is basically a mix of a few toold to turn your Windows Machine into the best possible Sunshine Streaming for a steam deck. This is accomplished by creating hotkeys that automatically set up a virtual third monitor and disable your main monitors, and creating other hotkeys that reset your setup back to normal. Much of this is easily attributable to other devices besides the Steam Deck if you know how to set up a remote streaming application (e.g. [Moonlight](https://github.com/moonlight-stream)) and know the device's resolution and framerate. 
+Seamless Sunshine is basically a mix of a few tools to turn your Windows Machine into the best possible Sunshine Streaming for a steam deck. This is accomplished by creating hotkeys that automatically set up a virtual third monitor and disable your main monitors, and creating other hotkeys that reset your setup back to normal. Much of this is easily attributable to other devices besides the Steam Deck if you know how to set up a remote streaming application (e.g. [Moonlight](https://github.com/moonlight-stream)) and know the device's resolution and frame rate. 
 
 ## Tutorial
 ### Prerequisites
-1. Make sure Powershell is installed.
-2. Make sure that your user is able to execute Powershell scripts via the Powershell Execution Policy.
-   To do this, run `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` in an Administrator Powershell while logged in as the user that you intend to use Sunshine with.
+1. Make sure PowerShell is installed.
+2. Make sure that your user is able to execute PowerShell scripts via the PowerShell Execution Policy.
+   To do this, run `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` in an Administrator PowerShell while logged in as the user that you intend to use Sunshine with.
 
 ### Install Sunshine
 Firstly, download and install [Sunshine](https://github.com/LizardByte/Sunshine) and make sure it is installed and running. [This](https://www.youtube.com/watch?v=Wb8j8Ojd4YQ) is a good tutorial to get Sunshine set up on your Windows machine.
@@ -25,7 +25,7 @@ If everything is done correctly, you should have an extra monitor with a 1280x80
 ![image](https://github.com/user-attachments/assets/dc6adb5a-fcd8-4d56-a082-1e3a66332583)
 
 
-### Configure Sunshine for your resolution and framerate.
+### Configure Sunshine for your resolution and frame rate.
 Next, go into your Sunshine management console (likely at [https://localhost:47990/](https://localhost:47990/), and log in and go to **Configuration > Audio/Video** and scroll to the bottom.
 
 Make sure your settings in Sunshine match your Steam Deck's resolution/display:
@@ -33,14 +33,14 @@ Make sure your settings in Sunshine match your Steam Deck's resolution/display:
 ![image](https://github.com/user-attachments/assets/23162299-4fc7-4365-82c6-2f62633b7a49)
 
 ### Install DisplayConfig
-The next step is to install [DisplayConfig](https://www.powershellgallery.com/packages/DisplayConfig/2.0), a Powershell package that allows you to control your display state.
+The next step is to install [DisplayConfig](https://www.powershellgallery.com/packages/DisplayConfig/2.0), a PowerShell package that allows you to control your display state.
 
 Install this by opening up a PowerShell or Terminal as Administrator, then type in `Install-Module -Name DisplayConfig` and hit Enter.
 
 ### Create your display configurations
 Create a new directory for all of your scripts that will be used to control your display configuration. in this example, I will be using `C:\Scripts`, but you can realistically store these scripts anywhere if you know how to.
 
-Open up a Powershell/Terminal and run the following commands, along with doing the following steps:
+Open up a PowerShell/Terminal and run the following commands, along with doing the following steps:
 1. Create a Scripts directory:
   `mkdir 'C:\Scripts\`
 2. Make a Display Configuration directory
@@ -56,7 +56,7 @@ Open up a Powershell/Terminal and run the following commands, along with doing t
 
 4. Create your monitor profile for the Default Configuration by using the following command:
   `Get-DisplayConfig | Export-Clixml C:\Scripts\display-configs\default-profile.xml`
-5. Set your monoitors to your "Sunshine Configuration". You can do this by disabling all of your phyiscal monitors, and enabling your virtual display and making it your main display. **NOTE**: You will need to connect to your PC with your Steam Deck during this step to be able to see the disabled monitor.
+5. Set your monitors to your "Sunshine Configuration". You can do this by disabling all of your phyiscal monitors, and enabling your virtual display and making it your main display. **NOTE**: You will need to connect to your PC with your Steam Deck during this step to be able to see the disabled monitor.
 
   For example, my Monitor 3 (The Virtual Monitor) is set to "extend this display"
   ![image](https://github.com/user-attachments/assets/4b4a2748-67dd-4648-ac28-0a23a7e0ac5f)
@@ -102,7 +102,7 @@ And save the file.
 8. Repeat steps 2-5, but with `powershell.exe -ExecutionPolicy Bypass -File "C:\Scripts\set-sunshine.ps1"` as the shortcut's location/path, `Set Sunshine display configuration` as the shortcut's name, and a different shortcut key combination, such as `Ctrl + Alt + S`  (for Ctrl + Alt + Sunshine)
 
 ## Result
-If you followed all of the instructions correctly, you should be able to use your shortcut keys at any time to switch between your Default and Sunshine display configurations.
+If you followed all the instructions correctly, you should be able to use your shortcut keys at any time to switch between your Default and Sunshine display configurations.
 
 
 ## Credits
