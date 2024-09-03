@@ -20,6 +20,7 @@ After that, go along with the Virtual Display driver install as normal for your 
 Next, go into your Sunshine management console (likely at [https://localhost:47990/](https://localhost:47990/), and log in and go to **Configuration > Audio/Video** and scroll to the bottom.
 
 Make sure your settings in Sunshine match your Steam Deck's resolution/display:
+
 ![image](https://github.com/user-attachments/assets/23162299-4fc7-4365-82c6-2f62633b7a49)
 
 
