@@ -14,7 +14,7 @@ Firstly, download and install [Sunshine](https://github.com/LizardByte/Sunshine)
 Secondly, install [Moonlight](https://github.com/moonlight-stream) on your Steam Deck. [Here](https://youtu.be/SewuUleDVug?si=4Pi-u2O48CuU6h6e&t=298) is a good tutorial to get Moonlight set up on your Steam Deck. Make sure that you are able to connect to your computer using Sunshine.
 
 ### Install Virtual Display Driver to your Windows System.
-Here is a tutorial to install [Virtual Display Driver](https://www.youtube.com/watch?v=byfBWDnToYk) on Windows 10/11.
+[Here](https://www.youtube.com/watch?v=byfBWDnToYk) is a tutorial to install [Virtual Display Driver](https://github.com/itsmikethetech/Virtual-Display-Driver) on Windows 10/11.
 
 After extracting the **IddSampleDriver** folder, make sure that you edit the `option.txt` file and add a line that says `1280, 800, 60` if you have a Steam Deck LCD, and `1280, 800, 90` to match the Steam Deck OLED's configuration.
 ![image](https://github.com/user-attachments/assets/d3a14dfb-f610-4223-945a-46ac756414bc)
