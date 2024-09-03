@@ -99,7 +99,7 @@ And save the file.
 5. Name the shortcut something like `Set default display configuration`.
 6. Right click the newly created shortcut and hit "Properties"
 7. Set the "Shortcut Key" to something you will remember, such as `Ctrl + Alt + D` (D for Default).
-8. Repeat steps 2-5, but with `powershell.exe -ExecutionPolicy Bypass -File "C:\Scripts\set-sunshine.ps1"` as the shortcut's location/path, `Set Sunshine display configuration` as the shortcut's name, and a different shortcut key combination, such as `Ctrl + Alt + S'  (for Ctrl + Alt + Sunshine)
+8. Repeat steps 2-5, but with `powershell.exe -ExecutionPolicy Bypass -File "C:\Scripts\set-sunshine.ps1"` as the shortcut's location/path, `Set Sunshine display configuration` as the shortcut's name, and a different shortcut key combination, such as `Ctrl + Alt + S`  (for Ctrl + Alt + Sunshine)
 
 ## Result
 If you followed all of the instructions correctly, you should be able to use your shortcut keys at any time to switch between your Default and Sunshine display configurations.
