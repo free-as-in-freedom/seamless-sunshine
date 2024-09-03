@@ -2,6 +2,11 @@
 Seamless Sunshine is basically a mix of a few toold to turn your Windows Machine into the best possible Sunshine Streaming for a steam deck. This is accomplished by creating hotkeys that automatically set up a virtual third monitor and disable your main monitors, and creating other hotkeys that reset your setup back to normal. Much of this is easily attributable to other devices besides the Steam Deck if you know how to set up a remote streaming application (e.g. [Moonlight](https://github.com/moonlight-stream)) and know the device's resolution and framerate. 
 
 ## Tutorial
+### Prerequisites
+1. Make sure Powershell is installed.
+2. Make sure that your user is able to execute Powershell scripts via the Powershell Execution Policy.
+   To do this, run `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` in an Administrator Powershell while logged in as the user that you intend to use Sunshine with.
+
 ### Install Sunshine
 Firstly, download and install [Sunshine](https://github.com/LizardByte/Sunshine) and make sure it is installed and running. [This](https://www.youtube.com/watch?v=Wb8j8Ojd4YQ) is a good tutorial to get Sunshine set up on your Windows machine.
 
@@ -82,10 +87,24 @@ Import-Clixml C:\Scripts\display-configs\sunshine-profile.xml | Use-DisplayConfi
 And save the file.
 
 ### Assign Keyboard Shortcuts to your display configuration scripts
-Open up File Explorer and navigate to `C:\Scripts`.
+1. Open up File Explorer and navigate to `C:\Scripts`.
 
-Right click in the folder and click **New > Shortcut**.
+2. Right click in the folder and click **New > Shortcut**.
+
 ![image](https://github.com/user-attachments/assets/bc021e80-8c8e-4211-89a8-82ceee5d95e3)
+
+3. Add `powershell.exe -ExecutionPolicy Bypass -File "C:\Scripts\set-default.ps1"` to the field and hit Next
+![image](https://github.com/user-attachments/assets/608b96ae-bbd4-43af-a5de-09396b954e6e)
+
+5. Name the shortcut something like `Set default display configuration`.
+6. Right click the newly created shortcut and hit "Properties"
+7. Set the "Shortcut Key" to something you will remember, such as `Ctrl + Alt + D` (D for Default).
+8. Repeat steps 2-5, but with `powershell.exe -ExecutionPolicy Bypass -File "C:\Scripts\set-sunshine.ps1"` as the shortcut's location/path, `Set Sunshine display configuration` as the shortcut's name, and a different shortcut key combination, such as `Ctrl + Alt + S'  (for Ctrl + Alt + Sunshine)
+
+## Result
+If you followed all of the instructions correctly, you should be able to use your shortcut keys at any time to switch between your Default and Sunshine display configurations.
+
+
 
 
 
