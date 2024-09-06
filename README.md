@@ -6,6 +6,7 @@ Seamless Sunshine is basically a mix of a few tools to turn your Windows Machine
 1. Make sure PowerShell is installed.
 2. Make sure that your user is able to execute PowerShell scripts via the PowerShell Execution Policy.
    To do this, run `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` in an Administrator PowerShell while logged in as the user that you intend to use Sunshine with.
+3. Make sure [AutoHotKey](https://www.autohotkey.com/) is installed.
 
 ### Install Sunshine
 Firstly, download and install [Sunshine](https://github.com/LizardByte/Sunshine) and make sure it is installed and running. [This](https://www.youtube.com/watch?v=Wb8j8Ojd4YQ) is a good tutorial to get Sunshine set up on your Windows machine.
@@ -38,13 +39,11 @@ The next step is to install [DisplayConfig](https://www.powershellgallery.com/pa
 Install this by opening up a PowerShell or Terminal as Administrator, then type in `Install-Module -Name DisplayConfig` and hit Enter.
 
 ### Create your display configurations
-Create a new directory for all of your scripts that will be used to control your display configuration. in this example, I will be using `C:\Scripts`, but you can realistically store these scripts anywhere if you know how to.
+Create a new directory for all of your configs that will be used to control your display configuration. in this example, I will be using `C:\display-cfgs`, but you can realistically store these scripts anywhere if you know how to.
 
 Open up a PowerShell/Terminal and run the following commands, along with doing the following steps:
-1. Create a Scripts directory:
-  `mkdir 'C:\Scripts\`
-2. Make a Display Configuration directory
-  `mkdir 'C:\Scripts\display-configs`
+1. Create a display configs directory:
+  `mkdir 'C:\display-configs`
 3. Set your monitors to your "Default Configuration", which is essentially your regular monitor configuration when you are not using Sunshine/Moonlight. This can be done by going into **Settings > System > Display** and disabling your Virtual Monitor, and making sure the desired monitor is set as your "Main Display".
 
    For example, my "Monitor 3" (the Virtual Monitor) is set to "disconnect this display"
@@ -55,7 +54,7 @@ Open up a PowerShell/Terminal and run the following commands, along with doing t
    ![image](https://github.com/user-attachments/assets/c3e4aa38-d3c1-48b1-bed8-03b537bf681e)
 
 4. Create your monitor profile for the Default Configuration by using the following command:
-  `Get-DisplayConfig | Export-Clixml C:\Scripts\display-configs\default-profile.xml`
+  `Get-DisplayConfig | Export-Clixml C:\display-configs\default-profile.xml`
 5. Set your monitors to your "Sunshine Configuration". You can do this by disabling all of your phyiscal monitors, and enabling your virtual display and making it your main display. **NOTE**: You will need to connect to your PC with your Steam Deck during this step to be able to see the disabled monitor.
 
   For example, my Monitor 3 (The Virtual Monitor) is set to "extend this display"
@@ -65,44 +64,54 @@ Open up a PowerShell/Terminal and run the following commands, along with doing t
   ![image](https://github.com/user-attachments/assets/17c74cf2-5a24-4333-8a4f-ff856231b559)
 
 6.  Create your monitor profile for the Sunshine configuration by using the following command:
-  `Get-DisplayConfig | Export-Clixml C:\Scripts\display-configs\sunshine-profile.xml`
+  `Get-DisplayConfig | Export-Clixml C:\display-configs\sunshine-profile.xml`
 
 7. Manually reset your monitors back to your Default Configuration, so that you can use your normal displays for the rest of the setup.
 
-### Create your Scripts to switch display configurations
-Next, go into `C:\Scripts` and create 2 new files, `set-default.ps1` and `set-sunshine.ps1`.
+### Create your Autohotkey scripts
+**NOTE: this tutorial is for AutoHotkey 2.0. If you are using Autohotkey 1.x, translate the scripts it by reading their documentation (or just ask ChatGPT to do it for you).**
+1. Open up **Run** by hitting `Win + R`. Type in `shell:startup` in the textbox and hit `Enter`. 
 
-Edit `set-default.ps1` to contain the following lines of code:
+2. Right click in the folder and click **New > AutoHotkey Script**.
+![image](https://github.com/user-attachments/assets/853b83af-3746-4590-99f2-b3a80166b8b6)
+
+3. Name the file `default-cfg`, select `Empty` and click `edit`.
+5. Put the following into this file:
 `
-Import-Module DisplayConfig
-Import-Clixml C:\Scripts\display-configs\default-profile.xml | Use-DisplayConfig -UpdateAdapterIds
+^!d:: {  ; Ctrl + Alt + D hotkey
+    psCommand := "Import-Clixml C:\display-configs\default-cfg.xml | Use-DisplayConfig -UpdateAdapterIds"
+    Run('powershell.exe -Command "' psCommand '"',, 'Hide') 
+}
 `
-And save the file.
-
-Edit `set-sunshine.ps1` to contain the following lines of code:
+You can edit the key combination to anything you like. Refer to the [AutoHotkey documentation](https://www.autohotkey.com/docs/v2/).
+6. Save the file and close the editor.
+7. In File Explorer, double click `default-cfg.ahk` to allow the Hotkey script to be ran.
+8. Repeat steps 2-7 but with the following filename: `sunshine-cfg` and the following script text:
 `
-Import-Module DisplayConfig
-Import-Clixml C:\Scripts\display-configs\sunshine-profile.xml | Use-DisplayConfig -UpdateAdapterIds
+^!s:: {  ; Ctrl + Alt + S hotkey
+    psCommand := "Import-Clixml C:\display-configs\sunshine-cfg.xml | Use-DisplayConfig -UpdateAdapterIds"
+    Run('powershell.exe -Command "' psCommand '"',, 'Hide') 
+}
 `
-And save the file.
-
-### Assign Keyboard Shortcuts to your display configuration scripts
-1. Open up File Explorer and navigate to `C:\Scripts`.
-
-2. Right click in the folder and click **New > Shortcut**.
-
-![image](https://github.com/user-attachments/assets/bc021e80-8c8e-4211-89a8-82ceee5d95e3)
-
-3. Add `powershell.exe -ExecutionPolicy Bypass -File "C:\Scripts\set-default.ps1"` to the field and hit Next
-![image](https://github.com/user-attachments/assets/608b96ae-bbd4-43af-a5de-09396b954e6e)
-
-5. Name the shortcut something like `Set default display configuration`.
-6. Right click the newly created shortcut and hit "Properties"
-7. Set the "Shortcut Key" to something you will remember, such as `Ctrl + Alt + D` (D for Default).
-8. Repeat steps 2-5, but with `powershell.exe -ExecutionPolicy Bypass -File "C:\Scripts\set-sunshine.ps1"` as the shortcut's location/path, `Set Sunshine display configuration` as the shortcut's name, and a different shortcut key combination, such as `Ctrl + Alt + S`  (for Ctrl + Alt + Sunshine)
 
 ## Result
-If you followed all the instructions correctly, you should be able to use your shortcut keys at any time to switch between your Default and Sunshine display configurations.
+If you followed all the instructions correctly, you should be able to use your shortcut keys (`Ctrl + Alt + D` for default and `Ctrl + Alt + S` for Sunshine by default) at any time to switch between your Default and Sunshine display configurations.
+
+
+## Troubleshooting
+There is a chance that plugging in a certain monitor combination will cause your computer to be difficult to use due to certain monitors being disabled.
+To return to your computer's default monitor configurations, do the following:
+1. Open up **Run** by hitting `Win + R`. Type in `regedit` in the textbox and hit `Enter`.
+![image](https://github.com/user-attachments/assets/99a5c2e0-32a0-45af-adb4-0d96a9b58200)
+
+2. Navigate to `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Configuration`
+![image](https://github.com/user-attachments/assets/44d3a46e-cf09-49bd-93ab-26071a564b37)
+
+3. Delete each one of the folders under `Configuration`.
+![image](https://github.com/user-attachments/assets/637248ac-f078-4407-95fb-185474aa7983)
+This will reset your display configurations.
+
+4. Restart your computer and repeat all of the steps in the **Create your display configurations** section.
 
 
 ## Credits
@@ -113,3 +122,5 @@ Thanks to everyone credited in the [Sunshine](https://github.com/LizardByte/Suns
 Thanks to [Steam Deck Guy](https://www.youtube.com/@steamdeckguy) for the Moonlight install tutorial.
 
 Thanks to [MartinGC94](https://github.com/MartinGC94) for his work on [DisplayConfig](https://github.com/MartinGC94/DisplayConfig).
+
+Thanks to [AutoHotkey](https://www.autohotkey.com/).
