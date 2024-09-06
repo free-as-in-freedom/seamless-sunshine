@@ -72,6 +72,8 @@ Open up a PowerShell/Terminal and run the following commands, along with doing t
 **NOTE: this tutorial is for AutoHotkey 2.0. If you are using Autohotkey 1.x, translate the scripts it by reading their documentation (or just ask ChatGPT to do it for you).**
 1. Open up **Run** by hitting `Win + R`. Type in `shell:startup` in the textbox and hit `Enter`. 
 
+![image](https://github.com/user-attachments/assets/75109ed0-a429-4a88-87e5-d2668b8cbc22)
+
 2. Right click in the folder and click **New > AutoHotkey Script**.
 ![image](https://github.com/user-attachments/assets/853b83af-3746-4590-99f2-b3a80166b8b6)
 
@@ -102,6 +104,7 @@ If you followed all the instructions correctly, you should be able to use your s
 There is a chance that plugging in a certain monitor combination will cause your computer to be difficult to use due to certain monitors being disabled.
 To return to your computer's default monitor configurations, do the following:
 1. Open up **Run** by hitting `Win + R`. Type in `regedit` in the textbox and hit `Enter`.
+
 ![image](https://github.com/user-attachments/assets/99a5c2e0-32a0-45af-adb4-0d96a9b58200)
 
 2. Navigate to `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Configuration`
