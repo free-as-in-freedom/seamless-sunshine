@@ -43,7 +43,7 @@ Create a new directory for all of your configs that will be used to control your
 
 Open up a PowerShell/Terminal and run the following commands, along with doing the following steps:
 1. Create a display configs directory:
-  `mkdir 'C:\display-configs`
+  `mkdir 'C:\display-configs'`
 3. Set your monitors to your "Default Configuration", which is essentially your regular monitor configuration when you are not using Sunshine/Moonlight. This can be done by going into **Settings > System > Display** and disabling your Virtual Monitor, and making sure the desired monitor is set as your "Main Display".
 
    For example, my "Monitor 3" (the Virtual Monitor) is set to "disconnect this display"
