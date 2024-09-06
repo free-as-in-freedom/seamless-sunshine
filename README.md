@@ -112,6 +112,7 @@ To return to your computer's default monitor configurations, do the following:
 
 3. Delete each one of the folders under `Configuration`.
 ![image](https://github.com/user-attachments/assets/637248ac-f078-4407-95fb-185474aa7983)
+
 This will reset your display configurations.
 
 4. Restart your computer and repeat all of the steps in the **Create your display configurations** section.
