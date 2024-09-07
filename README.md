@@ -54,7 +54,7 @@ Open up a PowerShell/Terminal and run the following commands, along with doing t
    ![image](https://github.com/user-attachments/assets/c3e4aa38-d3c1-48b1-bed8-03b537bf681e)
 
 4. Create your monitor profile for the Default Configuration by using the following command:
-  `Get-DisplayConfig | Export-Clixml C:\display-configs\default-profile.xml`
+  `Get-DisplayConfig | Export-Clixml C:\display-configs\default-cfg.xml`
 5. Set your monitors to your "Sunshine Configuration". You can do this by disabling all of your phyiscal monitors, and enabling your virtual display and making it your main display. **NOTE**: You will need to connect to your PC with your Steam Deck during this step to be able to see the disabled monitor.
 
   For example, my Monitor 3 (The Virtual Monitor) is set to "extend this display"
@@ -64,7 +64,7 @@ Open up a PowerShell/Terminal and run the following commands, along with doing t
   ![image](https://github.com/user-attachments/assets/17c74cf2-5a24-4333-8a4f-ff856231b559)
 
 6.  Create your monitor profile for the Sunshine configuration by using the following command:
-  `Get-DisplayConfig | Export-Clixml C:\display-configs\sunshine-profile.xml`
+  `Get-DisplayConfig | Export-Clixml C:\display-configs\sunshine-cfg.xml`
 
 7. Manually reset your monitors back to your Default Configuration, so that you can use your normal displays for the rest of the setup.
 
